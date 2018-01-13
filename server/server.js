@@ -1,15 +1,20 @@
+//Dependencies
 const express = require( 'express' );
 const app = express();
 const bodyParser = require( 'body-parser' );
-const port = process.env.PORT || 4400;
+const taskRouter = require('.routes/task.router');
 
-// use bodyParser.urlencoded throughout the app with this:
+
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
-// serve back static files
 app.use(express.static('server/public'));
 
+
+// Routes
+app.use('/task', taskRouter);
+
+const port = process.env.PORT || 4400;
+//Server Listener
 app.listen(port, function(){
     console.log('server running on: ', port);
   }); // end spin up server

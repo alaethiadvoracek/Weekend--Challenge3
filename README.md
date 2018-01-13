@@ -13,12 +13,12 @@
         - [] marked complete should be able to be stored in the database 
     - [] Add tables to .sql file 
     - [] Save sql file to assignment 
-    - [] Commit #4
+    - [x] Commit #4
 # Getting the App Running 
-- [] Set up initial data for the DOM 
-    - [] inputs for values to create a new task (store this in the database)
+- [x] Set up initial data for the DOM 
+    - [x] inputs for values to create a new task (store this in the database)
     - [] Append new task to the DOM 
-    - [] create buttons to complete or delete task ( mark complete, DELETE task )
+    - [x] create buttons to complete or delete task ( mark complete, DELETE task )
         - should have a visual change when marked complete 
         - explore CSS options for a check box in each row of the table that changes when marked complete
         - [] Deleting should delete from DOM and database 

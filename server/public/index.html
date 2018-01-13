@@ -5,10 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>To Do List</title>
     <script src="vendors/jquery.min.js" charset="utf-8"></script>
-    <script src="scripts/client.js" charset="utf-8"></script> 
+    <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> 
+    <link href="https://fonts.google.com/specimen/Lobster">
     <link rel="stylesheet" href="styles/styles.css">  
 </head>
-<body>
-    
-</body>
+    <body>
+        <div class="container">
+            <div class="row Header">
+                <div class="col-sm-12">
+                    <h1>Let's Do This!</h1>
+                </div>
+            </div>
+            <div class="row Input Task">
+                <div class="col-sm-12">
+                    <h4>New Task</h4>
+                    <input type="text" id="task" value="" placeholder="Task">
+                        <select id="Day">
+                            <option>Day of the Week</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                </div>
+            </div>
+            <div class="row Tasks">
+                <div class="col-sm-12">
+                    <h3>Top Priority Tasks</h3>
+                </div>
+            </div>
+            <div class="row Completed Tasks">
+                <div class="col-sm-12">
+                    <h3>Completed Tasks</h3>
+                </div>
+            </div>
+        </div> 
+    </body>
 </html>

@@ -2,9 +2,11 @@
 - [x] Create github repository and link to assignment
 - [x] Commit #1 
 # Server
-- [] set up server 
-    - [] install packages and create needed files
-    - [] Commit #3
+- [x] set up server 
+    - [x] install packages and create needed files
+        - bring in jQuery  
+    - [x] Set up html with sources 
+    - [x] Commit #3
 # Database
 - [] create initial database 
     - [] create tables with sample data for now.. 

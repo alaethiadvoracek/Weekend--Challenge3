@@ -25,7 +25,8 @@ function toDOM(response) {
       let $row = $('<tr>');
       $row.data('id', response[i].id);
       $row.append('<td> ' + response[i].task + '</td>');
-      $row.append('<td> ' + response[i].dayOfTheWeek + '</td>');
+      $row.append('<td> ' + response[i].importance + '</td>');
+      $row.append('<td> ' + response[i].day_of_the_week + '</td>');
       $row.append('<td><button type="button" id="Delete">Delete Task</button></td>');
       $row.append('<td><button type="button" class="completeReady" id="complete">Complete Task</button></td>');
       $('#viewTasks').append($row);
@@ -37,7 +38,8 @@ function toDOM(response) {
 function addNewTask (){
     let newTask = {
         task: $('task').val(),
-        dayOfTheWeek : $('day').val()
+        importance: $('importance').val(),
+        day_of_the_week : $('day').val()
     }//end newTask variable
     $.ajax({
         method: 'POST',
@@ -73,14 +75,13 @@ function deleteTask(){
 //complete task function 
 function completeTask(){
     let taskId = $(this).parents('tr').data('id');
-$.ajax({
-    method: "PUT",
-    url: '/task/'+taskId, 
-    data: {complete: completeReady},
-    success: function (response){
-        console.log('PUT response: ', response);
-        getTask();
-    }//end success function 
-
-});//end ajax put 
+    $.ajax({
+        method: "PUT",
+        url: '/task/'+taskId, 
+        data: {complete: completeReady},
+        success: function (response){
+            console.log('PUT response: ', response);
+            getTask();
+        }//end success function 
+    });//end ajax put 
 }//end complete task 

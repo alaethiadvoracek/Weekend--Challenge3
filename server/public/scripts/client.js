@@ -1,8 +1,10 @@
 console.log('client.js sourced');
-$( document ).ready(onLoad);
+
+$('document').ready(onLoad);
 
 //event listeners 
 function onLoad (){
+    console.log('JQ sourced');
 $('#submitTask').on('click', addNewTask);
 $('#complete').on ('click', completeTask);
 $('#delete').on('click', deleteTask);

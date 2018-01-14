@@ -1,7 +1,7 @@
 const pg = require('pg');
 const Pool = pg.Pool;
 const config = {
-    database: 'to_to_list',
+    database: 'to_do_list',
     host: 'localhost',
     port: 5432,
     max: 10,

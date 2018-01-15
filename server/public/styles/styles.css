@@ -1,18 +1,38 @@
-.Banner {
+.container {
     background: rgb(96, 103, 110)
     padding-bottom 25px;
 }
 
 h1 {
     text-align: center;
-    font-family: 
-    text-color rgb(241, 96, 120);
+    font-family: 'Macondo', cursive; 
+    color: rgb(241, 96, 120);
 }
 
-
+h4 {
+   font-family: 'Kavivanar', cursive;
+   color: rgb(235, 20, 56);
+   
+}
 
 input[type=text] {
     border: none;
     border-bottom: 2px solid rgb(45, 45, 47);
     margin-left: 10px;
 }
+table {
+    border-collapse: collapse;
+    width: 85%;
+    margin: 0 auto;
+    font-size: 17px;
+  }
+  
+  th {
+    border-bottom: 1px solid rgb(77, 79, 82);
+  }
+  
+  th, td {
+      padding: 10px;
+      text-align: left;
+      font-family: 'Ranga', cursive;
+  }

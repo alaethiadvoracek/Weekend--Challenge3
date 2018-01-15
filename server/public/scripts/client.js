@@ -1,10 +1,11 @@
 console.log('client.js sourced');
 
-$('document').ready(onLoad);
+$(document).ready(onLoad);
+
 
 //event listeners 
 function onLoad (){
-    console.log('JQ sourced');
+getTask();
 $('#submitTask').on('click', addNewTask);
 $('#complete').on ('click', completeTask);
 $('#delete').on('click', deleteTask);
@@ -27,11 +28,10 @@ function toDOM(response) {
       let $row = $('<tr>');
       $row.data('id', response[i].id);
       $row.append('<td> ' + response[i].task + '</td>');
-      $row.append('<td> ' + response[i].importance + '</td>');
       $row.append('<td> ' + response[i].day_of_the_week + '</td>');
+      $row.append('<td> ' + response[i].importance + '</td>');
       $row.append('<td><button type="button" id="Delete">Delete Task</button></td>');
-      $row.append('<td><button type="button" class="completeReady" id="complete">Complete Task</button></td>');
-      $('#viewTasks').append($row);
+      $row.append('<td><button type="button" class="completeReady" id="complete">Complete Task</button></td>')
       }//end for loop
   }//end toDOM function 
 
@@ -39,9 +39,9 @@ function toDOM(response) {
 //add new task to list 
 function addNewTask (){
     let newTask = {
-        task: $('task').val(),
-        importance: $('importance').val(),
-        day_of_the_week : $('day').val()
+        task: $('#task').val(),
+        day_of_the_week : $('#day').val(),
+        importance: $('#importance').val()
     }//end newTask variable
     $.ajax({
         method: 'POST',
@@ -59,6 +59,8 @@ function addNewTask (){
 //Reset Inputs
 function resetInput(){
     $('#task').val('');
+    $('#day').val('Day Of the Week');
+    $('#importance').val('Importance of Task');
 }//end empty input
 
 //delete task 
@@ -79,7 +81,7 @@ function completeTask(){
     let taskId = $(this).parents('tr').data('id');
     $.ajax({
         method: "PUT",
-        url: '/task/'+taskId, 
+        url: '/task/' + taskId, 
         data: {complete: completeReady},
         success: function (response){
             console.log('PUT response: ', response);

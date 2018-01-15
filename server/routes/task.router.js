@@ -20,8 +20,8 @@ router.get('/', (req, res) =>{
 
 router.post('/', (req, res) => {
     console.log('req.body: ', req.body);
-    const queryText = 'INSERT INTO task("task", "importance", "day_of_the_week") VALUES($1, $2, $3)';
-    pool.query(queryText, [req.body.task, req.body.importance, req.body.day_of_the_week])
+    const queryText = 'INSERT INTO task("task", "day_of_the_week", "importance") VALUES($1, $2, $3)';
+    pool.query(queryText, [req.body.task, req.body.day_of_the_week, req.body.importance])
         .then((result) => {
             console.log('query results: ', result);
             res.sendStatus(201);

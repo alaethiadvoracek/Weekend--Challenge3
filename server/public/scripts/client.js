@@ -30,7 +30,12 @@ function toDOM(response) {
       $row.append('<td> ' + response[i].task + '</td>');
       $row.append('<td> ' + response[i].day_of_the_week + '</td>');
       $row.append('<td><button type="button" id="Delete">Delete Task</button></td>');
+      if(response[i].complete_task == 'False'){
       $row.append('<td><button type="button" class="completeReady" id="complete">Complete Task</button></td>');
+      } else {
+          $row.append('<td></td>');
+      }
+      
       $('#viewTasks').append($row);
       }//end for loop
   }//end toDOM function 
@@ -40,7 +45,8 @@ function toDOM(response) {
 function addNewTask (){
     let newTask = {
         task: $('#task').val(),
-        day_of_the_week : $('#day').val()
+        day_of_the_week : $('#day').val(), 
+        complete_task : $('.row Tasks').val()
     }//end newTask variable
     $.ajax({
         method: 'POST',

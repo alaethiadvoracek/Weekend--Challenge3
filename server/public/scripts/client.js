@@ -7,8 +7,8 @@ $(document).ready(onLoad);
 function onLoad (){
 getTask();
 $('#submitTask').on('click', addNewTask);
-$('#complete').on ('click', completeTask);
-$('#delete').on('click', deleteTask);
+$('#complete').on ('click', '.completeReady', completeTask);
+$('#delete').on('click', '#delete', deleteTask);
 }//end on load 
 
 function getTask(){
@@ -29,9 +29,9 @@ function toDOM(response) {
       $row.data('id', response[i].id);
       $row.append('<td> ' + response[i].task + '</td>');
       $row.append('<td> ' + response[i].day_of_the_week + '</td>');
-      $row.append('<td> ' + response[i].importance + '</td>');
       $row.append('<td><button type="button" id="Delete">Delete Task</button></td>');
-      $row.append('<td><button type="button" class="completeReady" id="complete">Complete Task</button></td>')
+      $row.append('<td><button type="button" class="completeReady" id="complete">Complete Task</button></td>');
+      $('#viewTasks').append($row);
       }//end for loop
   }//end toDOM function 
 
@@ -40,8 +40,7 @@ function toDOM(response) {
 function addNewTask (){
     let newTask = {
         task: $('#task').val(),
-        day_of_the_week : $('#day').val(),
-        importance: $('#importance').val()
+        day_of_the_week : $('#day').val()
     }//end newTask variable
     $.ajax({
         method: 'POST',
@@ -60,7 +59,6 @@ function addNewTask (){
 function resetInput(){
     $('#task').val('');
     $('#day').val('Day Of the Week');
-    $('#importance').val('Importance of Task');
 }//end empty input
 
 //delete task 
@@ -79,10 +77,10 @@ function deleteTask(){
 //complete task function 
 function completeTask(){
     let taskId = $(this).parents('tr').data('id');
+    let completeTask = 'True'
     $.ajax({
         method: "PUT",
-        url: '/task/' + taskId, 
-        data: {complete: completeReady},
+        url: '/task/complete/' + taskId, 
         success: function (response){
             console.log('PUT response: ', response);
             getTask();

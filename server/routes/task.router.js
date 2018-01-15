@@ -6,7 +6,7 @@ const pool = require('../modules/pool');
 //Routes 
 
 router.get('/', (req, res) =>{
-    const queryText = 'SELECT * FROM task ORDER BY "day_of_the_week", "importance"';
+    const queryText = 'SELECT * FROM task ORDER BY "day_of_the_week"';
     pool.query(queryText)
         .then((result) => {
             // console.log('query results: ', result);            
@@ -20,8 +20,8 @@ router.get('/', (req, res) =>{
 
 router.post('/', (req, res) => {
     console.log('req.body: ', req.body);
-    const queryText = 'INSERT INTO task("task", "day_of_the_week", "importance") VALUES($1, $2, $3)';
-    pool.query(queryText, [req.body.task, req.body.day_of_the_week, req.body.importance])
+    const queryText = 'INSERT INTO task("task", "day_of_the_week") VALUES($1, $2)';
+    pool.query(queryText, [req.body.task, req.body.day_of_the_week])
         .then((result) => {
             console.log('query results: ', result);
             res.sendStatus(201);
@@ -32,8 +32,8 @@ router.post('/', (req, res) => {
         });//end catch error
 });//end router post information from database
 
-router.put('/:id', (req, res) => {
-    const queryText = 'UPDATE task SET "complete_task" = $1 WHERE "id" = $2';
+router.put('/complete/:id', (req, res) => {
+    const queryText = 'UPDATE task SET "complete_task" = "TRUE" WHERE "id" = $1';
     pool.query(queryText, [req.body.complete_task, req.params.id])
         .then((result) => {
         console.log('query results: ', result);
